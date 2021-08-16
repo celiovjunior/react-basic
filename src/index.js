@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Ex2 from './Ex2';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Ex2 />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
