@@ -17,24 +17,27 @@ import Form from './Form/Form';
 //   )
 // }
 
-const Teste = () => {
-  const active = false;
-  if(active) {
-    return <p>Teste...</p>;
-  } else {
-    return null
-  }
+const Titulo = ({cor, texto, children}) => {
+  return <h1 style={{color: cor}}>{texto}, {children}</h1>
 }
 
-const App = () => {
-  return (
-  <>
-    <Teste />
-    <Header />
-    <Form />
-    <Footer />
-  </>
+// const Teste = () => {
+//   const active = false;
+//   if(active) {
+//     return <p>Teste...</p>;
+//   } else {
+//     return null
+//   }
+// }
+
+// const App = () => {
+//   return (
+//   <>
+//     <Header />
+//     <Form />
+//     <Footer />
+//   </>
   
-  )
-}
-export default App;
+//   )
+// }
+// export default App;

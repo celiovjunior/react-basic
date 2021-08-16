@@ -6,12 +6,10 @@ const Form = () => {
     return (
         <form>
             <p>
-                <label htmlFor="nome">Nome</label>
-                <Input />
+                <Input type="text" id="email" label="Email" required />
             </p>
             <p>
-                <label htmlFor="email">E-mail</label>
-                <Input />
+                <Input type="password" id="senha" label="Senha" />
             </p>
             <Button />
         </form>
