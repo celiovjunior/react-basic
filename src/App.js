@@ -1,16 +1,18 @@
 import React from 'react';
+import ButtonModal from './ButtonModal';
+import Modal from './Modal';
 
 const App = () => {
-  let ativo = true;
+  const [modal, setModal] = React.useState(false);
 
-  function handleClick () {
-    ativo = !ativo;
-    console.log(ativo)
-  }
+  return (
+    <div>
+      <Modal modal={modal} setModal={setModal} />
+      <ButtonModal setModal={setModal} />
+    </div>
+  )  
 
-  return <button onClick={handleClick} className="ativo">
-    {ativo ? 'Ativado' : 'Desativado'}
-  </button>
+  // return <div></div>
 }
 
 export default App;
