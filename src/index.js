@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Ex3 from './Ex3';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Ex3 />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
