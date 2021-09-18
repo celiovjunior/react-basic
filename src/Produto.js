@@ -8,7 +8,7 @@ const Produto = ({produto}) => {
         fetch(`https://ranekapi.origamid.dev/json/api/produto/${produto}`)
         .then(r => r.json())
         .then((json) => setDados(json))
-    }, [])
+    }, [produto])
 
     if(dados === null) return null;
     return <div>
