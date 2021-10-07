@@ -1,20 +1,15 @@
 import React from 'react';
+import { GlobalContext } from './GlobalContext';
 
-const Produto = ({produto}) => {
-    const [dados, setDados] = React.useState(null);
+const Produto = () => {
+    const global = React.useContext(GlobalContext)
+    console.log(global)
 
-    React.useEffect(() => {
-        if(produto !== null)
-        fetch(`https://ranekapi.origamid.dev/json/api/produto/${produto}`)
-        .then(r => r.json())
-        .then((json) => setDados(json))
-    }, [produto])
+    function handleClick() {
+        global.setContar((contar) => contar + 1)
+    }
 
-    if(dados === null) return null;
-    return <div>
-        <h1>{dados.nome}</h1>
-        <p>{dados.preco}</p>
-    </div>
+    return <div>Produto: {global.contar} <button onClick={handleClick}>Adicionar</button></div>
 }
 
 export default Produto;
