@@ -5,11 +5,8 @@ const Produto = () => {
     const global = React.useContext(GlobalContext)
     console.log(global)
 
-    function handleClick() {
-        global.setContar((contar) => contar + 1)
-    }
 
-    return <div>Produto: {global.contar} <button onClick={handleClick}>Adicionar</button></div>
+    return <div>Produto: {global.contar} <button onClick={() => global.adicionarDois()}>Adicionar</button></div>
 }
 
 export default Produto;
