@@ -1,32 +1,15 @@
 import React from 'react';
-import Produto from './Produto';
 
 const App = () => {
-  const [produto, setProduto] = React.useState(null)
-  
-  React.useEffect(() => {
-    const produtoLocal = window.localStorage.getItem('produto')
-    if(produtoLocal !== null) setProduto(produtoLocal)
-  }, [])
+  const [comentarios, setComentarios] = React.useState(['teste', 'teste 2']);
 
-  React.useEffect(() => {
-    if(produto !== null)
-    {
-      window.localStorage.setItem('produto', produto)
-    }
-  }, [produto])
+  const [input, setInput] = React.useState('teste');
 
-  function handleClick({ target }) {
-    setProduto(target.innerText)
-  }
-  
-  return (
-    <div>
-      <h1>Preferência: {produto}</h1>
-      <button onClick={handleClick} style={{marginRight: '1rem'}}>notebook</button>
-      <button onClick={handleClick}>smartphone</button>
-      <Produto produto={produto}/>
-    </div>
-  )
+  return <div>
+    <ul>
+      {comentarios.map(comentario => <li key={comentario}>{ comentario }</li>)}
+      <input type="text" value={input} onChange={({target}) => setInput(target.value)}/>
+    </ul>
+  </div>
 }
 export default App;
