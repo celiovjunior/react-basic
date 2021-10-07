@@ -5,8 +5,10 @@ const Produto = () => {
     const global = React.useContext(GlobalContext)
     console.log(global)
 
-
-    return <div>Produto: {global.contar} <button onClick={() => global.adicionarDois()}>Adicionar</button></div>
+    if(global.dados === null) return null
+    return <div>
+        Produto: {global.dados.map(produto => <li key={produto.id}>{produto.nome}</li>)}
+    </div>
 }
 
 export default Produto;
