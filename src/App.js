@@ -4,7 +4,7 @@ import useFetch from './useFetch';
 
 const App = () => {
   const [produto, setProduto] = useLocalStorage('produto', '')
-  const { request, data } = useFetch();
+  const { request, data, loading } = useFetch();
 
   React.useEffect(() => {
     request("https://ranekapi.origamid.dev/json/api/produto")
@@ -14,17 +14,19 @@ const App = () => {
     setProduto(target.innerText)
   }
 
+  if(loading) return <p>Carregando...</p>
+  if(data) return (
 
-  console.log(data)
+      <div>
+      <p>Produto preferido: {produto}</p>
+      <button onClick={handleClick}>notebook</button>
+      <button onClick={handleClick}>smartphone</button>
+    
+      {data.map((produto) => <div key={produto.id}><h1>{produto.nome}</h1></div>)}
+    </div>
 
-  if(data === null) return null;
-  return <div>
-    <p>Produto preferido: {produto}</p>
-    <button onClick={handleClick}>notebook</button>
-    <button onClick={handleClick}>smartphone</button>
-  
-    {data.map((produto) => <div key={produto.id}><h1>{produto.nome}</h1></div>)}
-  </div>
+  )
+  else return null
 };
 
 export default App;
