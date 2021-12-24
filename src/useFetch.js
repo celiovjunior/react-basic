@@ -15,8 +15,8 @@ const useFetch = () => {
 
             setLoading(false)
 
-        } catch (erro) {
-            setError(erro)
+        } catch (error) {
+            setError('erro')
         } finally {
             setLoading(false)
         }

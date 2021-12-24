@@ -4,7 +4,7 @@ import useFetch from './useFetch';
 
 const App = () => {
   const [produto, setProduto] = useLocalStorage('produto', '')
-  const { request, data, loading } = useFetch();
+  const { request, data, loading, error } = useFetch();
 
   React.useEffect(() => {
     request("https://ranekapi.origamid.dev/json/api/produto")
@@ -14,10 +14,11 @@ const App = () => {
     setProduto(target.innerText)
   }
 
+  if(error) return <p>{error}</p>
   if(loading) return <p>Carregando...</p>
   if(data) return (
 
-      <div>
+    <div>
       <p>Produto preferido: {produto}</p>
       <button onClick={handleClick}>notebook</button>
       <button onClick={handleClick}>smartphone</button>
