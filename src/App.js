@@ -7,7 +7,12 @@ const App = () => {
   const { request, data, loading, error } = useFetch();
 
   React.useEffect(() => {
-    request("https://ranekapi.origamid.dev/json/api/produto")
+    async function fetchData() {
+      const { response, json } = await request("https://ranekapi.origamid.dev/json/api/produto")
+      
+      console.log(response)
+    }
+    fetchData();
   }, []);
 
   function handleClick({target}) {
