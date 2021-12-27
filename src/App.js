@@ -1,34 +1,83 @@
 import React from 'react';
 
+const formFields = [
+  {
+    id: 'nome',
+    label: 'Nome',
+    type: 'text'
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    type: 'email'
+  },
+  {
+    id: 'senha',
+    label: 'Senha',
+    type: 'password'
+  },
+  {
+    id: 'cep',
+    label: 'CEP',
+    type: 'text'
+  },
+  {
+    id: 'rua',
+    label: 'Rua',
+    type: 'text'
+  },
+  {
+    id: 'bairro',
+    label: 'Bairro',
+    type: 'text'
+  },
+  {
+    id: 'idade',
+    label: 'Idade',
+    type: 'text'
+  },
+  {
+    id: 'estado',
+    label: 'Estado',
+    type: 'text'
+  },
+]
+
 const App = () => {
   const [form, setForm] = React.useState({
     nome: '',
-    email: ''
-  })
-
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(form)
-  }
+    email: '',
+    senha: '',
+    cep: '',
+    rua: '',
+    bairro: '',
+    idade: '',
+    estado: '',
+  });
 
   function handleChange({target}) {
     const {id, value} = target
-    console.log(id, value)
-    setForm({
-      ...form,[id]: value
+    setForm({...form, [id]: value})
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch('https://raneki.origamid.dev/json/api/usuario', {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json'
+      }
     })
   }
-  
+
   return <form onSubmit={handleSubmit}>
-    <label htmlFor="nome">Nome</label>
-    <input name="nome" id="nome" type="text" value={form.nome} onChange={handleChange} />
-    {/* {form.nome} */}
-    <label htmlFor="email">Email</label>
-    <input name="email" id="email" type="email" value={form.email} onChange={handleChange} />
-    {/* {form.email} */}
+    {formFields.map(({id, label, type}) => <div key={id}>
+      <label htmlFor={id}>{label}</label>
+      <input type={type} id={id}  value={form[id]} onChange={handleChange}/>
+    </div>)}
     <button>Enviar</button>
-  </form>
+    
+    </form>
 }
 
 export default App;
