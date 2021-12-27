@@ -55,6 +55,8 @@ const App = () => {
     estado: '',
   });
 
+  const [response, setResponse] = React.useState(null);
+
   function handleChange({target}) {
     const {id, value} = target
     setForm({...form, [id]: value})
@@ -62,12 +64,13 @@ const App = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch('https://raneki.origamid.dev/json/api/usuario', {
+    fetch('https://ranekapi.origamid.dev/json/api/usuario', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
-      }
-    })
+      },
+      body: JSON.stringify(form)
+    }).then(response => setResponse(response))
   }
 
   return <form onSubmit={handleSubmit}>
@@ -75,6 +78,7 @@ const App = () => {
       <label htmlFor={id}>{label}</label>
       <input type={type} id={id}  value={form[id]} onChange={handleChange}/>
     </div>)}
+    {response && response.ok && <p>Formulario enviado!</p>}
     <button>Enviar</button>
     
     </form>
