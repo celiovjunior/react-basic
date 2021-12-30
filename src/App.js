@@ -12,14 +12,17 @@ const App = () => {
        label="Nome"
        value={nome}
        setValue={setNome}
+       required
       />
-      
+
       <Input
        id="email" 
        label="Email" 
        value={email} 
        setValue={setEmail}
       />
+
+      <button>Enviar</button>
     </form>
   )
 }
