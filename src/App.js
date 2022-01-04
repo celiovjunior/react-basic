@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from './Button';
+import Contato from './Contato';
 
 const App = () => {
 
   return(
     <div>
-      <Button width={300}>Click Aqui</Button>
+      <Contato />
     </div>
   )
 }
